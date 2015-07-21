@@ -64,7 +64,11 @@ module Anemone
     # or nil if no such option is set
     #
     def user_agent
-      @opts[:user_agent]
+      if @opts[:user_agent] == :random
+        Crawling::Utils.random_user_agent
+      else
+        @opts[:user_agent]
+      end
     end
 
     #
